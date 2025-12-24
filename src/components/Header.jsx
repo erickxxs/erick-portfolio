@@ -1,34 +1,51 @@
-import React from 'react';
-import Image from 'next/image'; // Usaremos el componente Image de Next.js
+'use client';
+
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className="bg-white text-gray-800 py-16 custom-shadow">
-      <div className="container mx-auto text-center px-4">
-        <div className="mb-4">
-          {/* Reemplaza <img> con <Image> de Next.js para optimización */}
-          <Image
-            src="/erick-profile.jpeg" // Necesitarás guardar tu foto en la carpeta /public
-            alt="Foto de perfil de Erick"
-            width={160}
-            height={160}
-            className="mx-auto rounded-full object-cover border-4 border-white shadow-lg"
-          />
+    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="nav">
+        <div className="nav-brand">
+          <h1 className="logo">Portafolio</h1>
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-2">
-          Erick Alan De la Cruz Mendoza
-        </h1>
-        <p className="text-xl md:text-2xl font-semibold text-blue-600 mb-6">
-          Desarrollador de Software
-        </p>
-        <p className="text-md md:text-lg text-gray-600 max-w-2xl mx-auto mb-8">
-          Creando software de calidad para una presencia digital que destaque.
-        </p>
-        <a href="#contacto"
-          className="bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
-          Hablemos de tu proyecto
-        </a>
-      </div>
+        <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+          <li><a href="#inicio" className="nav-link" onClick={closeMenu}>Inicio</a></li>
+          <li><a href="#sobre-mi" className="nav-link" onClick={closeMenu}>Sobre Mí</a></li>
+          <li><a href="#servicios" className="nav-link" onClick={closeMenu}>Servicios</a></li>
+          <li><a href="#proyectos" className="nav-link" onClick={closeMenu}>Proyectos</a></li>
+          <li><a href="#contacto" className="nav-link" onClick={closeMenu}>Contacto</a></li>
+        </ul>
+        <button
+          className={`nav-toggle ${isMenuOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Abrir menú"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
     </header>
   );
 };
