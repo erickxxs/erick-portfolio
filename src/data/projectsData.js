@@ -6,7 +6,7 @@ export const projectsData = [
     description: "Aplicación web de clima con búsqueda de ciudades, mapa interactivo, pronóstico extendido y diseño moderno con estética glassmorphism.",
     tags: ["Next.js", "TypeScript", "React", "TailwindCSS", "Google Maps API"],
     demoUrl: "https://clim-way-app.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/erickxxs/ClimWay-App",
   },
   {
     title: "Nombre del Proyecto 2",
