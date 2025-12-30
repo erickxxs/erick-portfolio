@@ -1,12 +1,12 @@
 // src/data/projectsData.js
 export const projectsData = [
   {
-    title: "Nombre del Proyecto 1",
-    image: "/projects/project-1.png", // Ruta a tu imagen en la carpeta public
-    description: "Descripción breve del proyecto. Explica qué problema resuelve y cómo lo hiciste.",
-    tags: ["React", "Next.js", "TailwindCSS"],
-    demoUrl: "https://link-a-tu-demo.com",
-    githubUrl: "https://github.com/tu-usuario/tu-repo",
+    title: "ClimWay",
+    image: "/projects/climway.png",
+    description: "Aplicación web de clima con búsqueda de ciudades, mapa interactivo, pronóstico extendido y diseño moderno con estética glassmorphism.",
+    tags: ["Next.js", "TypeScript", "React", "TailwindCSS", "Google Maps API"],
+    demoUrl: "https://clim-way-app.vercel.app/",
+    githubUrl: "",
   },
   {
     title: "Nombre del Proyecto 2",
